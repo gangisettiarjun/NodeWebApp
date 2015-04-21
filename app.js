@@ -17,6 +17,16 @@ var stormpathMiddleware = stormpath.init(app, {
 app.use(stormpathMiddleware);
 app.use('/profile',require('./profile')());
 
+app.use(stormpath.init(app, {
+  enableFacebook: true,
+  social: {
+    facebook: {
+      appId: '1430925370543294',
+      appSecret: '81672f79c04f274652a627d84ccca0fc',
+    },
+  },
+}));
+
 app.get('/', function(req, res) {
   res.render('home', {
     title: 'Welcome'
